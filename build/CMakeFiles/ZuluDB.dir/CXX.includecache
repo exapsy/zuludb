@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/exapsy/github.com/exapsy/zuludb/cmd/server/main.cpp
+iostream
+-
+../../internal/zuludb/drivers/filer/database.hpp
+/home/exapsy/github.com/exapsy/zuludb/internal/zuludb/drivers/filer/database.hpp
+
+/home/exapsy/github.com/exapsy/zuludb/internal/zuludb/drivers/filer/database.hpp
+iostream
+-
+fstream
+-
+string
+-
+./record.hpp
+/home/exapsy/github.com/exapsy/zuludb/internal/zuludb/drivers/filer/record.hpp
+
+/home/exapsy/github.com/exapsy/zuludb/internal/zuludb/drivers/filer/record.hpp
+iostream
+-
+

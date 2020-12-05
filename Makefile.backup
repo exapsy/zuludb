@@ -1,0 +1,12 @@
+
+.PHONY: clean
+
+clean: rm -rf ./build
+
+build: ./build
+	clean &&
+	mkdir ./build &&
+	cd ./build &&
+	cmake -S .. -B . &&
+	make
+
