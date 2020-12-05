@@ -1,2 +1,0 @@
-/usr/bin/ar qc libInternalZuluDB.a CMakeFiles/InternalZuluDB.dir/drivers/filer/record.cpp.o CMakeFiles/InternalZuluDB.dir/drivers/filer/database.cpp.o
-/usr/bin/ranlib libInternalZuluDB.a
