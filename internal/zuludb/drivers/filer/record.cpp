@@ -2,17 +2,20 @@
 
 #include "./record.hpp"
 
-Record::Record(uint32_t id, const char data[]) {
-	this->id = id;
-	std::strcpy(this->data, data);
+Record::Record(ZL_RecordStruct record) {
+	this->_id = record.id;
+	this->_data = record.data;
+}
+
+Record::~Record() {
 }
 
 char* Record::getData() {
-	return this->data;
+	return this->_data;
 }
 
 uint32_t Record::getID() {
-	return this->id;
+	return this->_id;
 }
 
 uint32_t Record::getIndex() {

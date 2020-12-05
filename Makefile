@@ -5,7 +5,15 @@ build: CMakeLists.txt
 	rm -rf ./build/*
 	mkdir -p ./build
 	echo "Building\n"
-	cmake -S . -B ./build
+	cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build
+	cd ./build && make
+
+release: CMakeLists.txt
+	echo "Cleaning"
+	rm -rf ./build/*
+	mkdir -p ./build
+	echo "Building\n"
+	cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build
 	cd ./build && make
 
 clean:

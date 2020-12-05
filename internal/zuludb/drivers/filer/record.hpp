@@ -4,21 +4,27 @@
 
 class Database;
 
+typedef struct RecordStruct {
+	uint32_t id;
+	char* data;
+} ZL_RecordStruct;
+
 /*
  * Record stores a table's record data
  */
 class Record {
 	public:
 		Record();
-		Record(uint32_t id, const char data[]);
+		~Record();
+		Record(ZL_RecordStruct);
 		uint32_t getID();
 		uint32_t getIndex();
 		uint32_t setIndex();
 		char* getData();
 	private:
-		uint32_t id;
+		uint32_t _id;
 		uint32_t _index;
-		char* data;
+		char* _data;
 };
 
 #endif

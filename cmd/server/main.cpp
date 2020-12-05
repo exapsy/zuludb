@@ -1,17 +1,20 @@
 #include <iostream>
+#include <cstring>
 #include "../../internal/zuludb/drivers/filer/database.hpp"
+#include "../../internal/zuludb/drivers/filer/record.hpp"
 
 int main() {
-	std::cout << "Opening stream\n";
-	std::string filename = "db";
-	Database db(filename);
+	Database db("db.txt");
 	db.open();
 
-	std::cout << "Writing data\n";
-	const char* data = "";
-	Record record(1, data);
+	char data[] = "Hello bitches";
+
+	ZL_RecordStruct r{};
+	r.id = 1;
+	r.data = data;
+	Record record(r);
+
 	db.write(record);
-	std::cout << "Data written\n";
 
 	return EXIT_SUCCESS;
 }

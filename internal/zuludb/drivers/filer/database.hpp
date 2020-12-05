@@ -9,7 +9,8 @@
  */
 class Database {
 	public:
-		Database(std::string filename);
+		Database(const char* filename);
+		~Database();
 		void open();
 		bool isOpen();
 		void close();
@@ -17,8 +18,8 @@ class Database {
 		std::string getIndexFilename();
 		std::string getFilename();
 	private:
-		std::fstream* _stream;
-		std::fstream* _indexStream;
+		std::fstream _stream;
+		std::fstream _indexStream;
 		char* _filename;
 
 		void index(Record record, uint32_t index);
