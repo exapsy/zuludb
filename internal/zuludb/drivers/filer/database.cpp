@@ -7,15 +7,9 @@
 Database::Database(const char* filename) {
 	this->_filename = (char*) malloc(strlen(filename));
 	std::strcpy(this->_filename, filename);
-	this->_stream = std::fstream(
-			//getFilename(),
-			"db.txt",
-			std::fstream::app
-			| std::fstream::in
-			| std::fstream::out
-	);
+	this->_stream = std::fstream();
 	this->_indexStream = std::fstream(
-			getIndexFilename(),
+			this->getIndexFilename(),
 			std::fstream::app
 			| std::fstream::in
 			| std::fstream::out
@@ -42,6 +36,13 @@ void Database::close() {
 }
 
 void Database::write(Record record) {
+	this->_stream = std::fstream(
+			getFilename(),
+			std::fstream::app
+			| std::fstream::in
+			| std::fstream::out
+			| std::fstream::binary
+	);
 	this->_stream.write(
 		record.getData(),
 		sizeof(char) * std::strlen(record.getData())
@@ -66,5 +67,7 @@ std::string Database::getFilename() {
 	return this->_filename;
 }
 std::string Database::getIndexFilename() {
-	return std::strcat(this->_filename, ".index");
+	std::string indexFilename(this->_filename);
+	indexFilename.append(".index");
+	return indexFilename;
 }
