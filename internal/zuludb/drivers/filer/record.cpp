@@ -1,23 +1,30 @@
-#include <cstring>
-
 #include "./record.hpp"
 
-Record::Record(ZL_RecordStruct record) {
-	this->_id = record.id;
-	this->_data = record.data;
+#include <cstring>
+
+Record::Record () {}
+Record::Record (ZL_RecordStruct record)
+{
+    id_ = record.id;
+    data_ = record.data;
 }
 
-Record::~Record() {
+Record::~Record () {}
+
+char*
+    Record::getData ()
+{
+    return data_;
 }
 
-char* Record::getData() {
-	return this->_data;
+uint32_t
+    Record::getID ()
+{
+    return id_;
 }
 
-uint32_t Record::getID() {
-	return this->_id;
-}
-
-uint32_t Record::getIndex() {
-	return this->_index;
+uint32_t
+    Record::getIndex ()
+{
+    return index_;
 }

@@ -20,20 +20,18 @@ typedef struct ZL_DatabaseIndex {
  */
 class Database {
    public:
-    Database (const char* filename);
+    Database (std::string filename);
     ~Database ();
-    bool isOpen ();
     void close ();
     void write (Record record);
     Record getRecordByID (uint32_t id);
     ZL_DatabaseIndex getIndexByRecordID (uint32_t id);
     std::string getIndexFilename ();
-    std::string getFilename ();
 
    private:
-    std::fstream _stream;
-    std::fstream _indexStream;
-    char* _filename;
+    std::fstream stream_;
+    std::fstream indexStream_;
+    std::string filename_;
 
     void index (ZL_DatabaseIndexArgs);
 };

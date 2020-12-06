@@ -3,7 +3,7 @@ project(ZuluDB)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/pkg)
 add_subdirectory(${CMAKE_SOURCE_DIR}/internal)
+add_subdirectory(googletest)
 
 add_executable(ZuluDB cmd/server/main.cpp)
 target_link_libraries(ZuluDB InternalZuluDB)
-
