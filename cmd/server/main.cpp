@@ -4,8 +4,7 @@
 #include "../../internal/zuludb/drivers/filer/record.hpp"
 
 int main() {
-	Database db("db.txt");
-	db.open();
+	Database db("db");
 
 	char data[] = "Hello bitches";
 

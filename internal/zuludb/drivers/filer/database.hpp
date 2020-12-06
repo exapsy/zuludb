@@ -11,7 +11,6 @@ class Database {
 	public:
 		Database(const char* filename);
 		~Database();
-		void open();
 		bool isOpen();
 		void close();
 		void write(Record record);

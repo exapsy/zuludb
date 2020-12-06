@@ -7,7 +7,13 @@
 Database::Database(const char* filename) {
 	this->_filename = (char*) malloc(strlen(filename));
 	std::strcpy(this->_filename, filename);
-	this->_stream = std::fstream();
+	this->_stream = std::fstream(
+			getFilename(),
+			std::fstream::app
+			| std::fstream::in
+			| std::fstream::out
+			| std::fstream::binary
+	);
 	this->_indexStream = std::fstream(
 			this->getIndexFilename(),
 			std::fstream::app
@@ -26,26 +32,14 @@ bool Database::isOpen() {
 	return this->_stream.is_open();
 }
 
-void Database::open() {
-	this->_stream.open(this->_filename);
-	this->_indexStream.open(this->_filename);
-}
-
 void Database::close() {
 	this->_stream.close();
 }
 
 void Database::write(Record record) {
-	this->_stream = std::fstream(
-			getFilename(),
-			std::fstream::app
-			| std::fstream::in
-			| std::fstream::out
-			| std::fstream::binary
-	);
 	this->_stream.write(
-		record.getData(),
-		sizeof(char) * std::strlen(record.getData())
+			reinterpret_cast<char*>(record.getData()),
+			sizeof(record.getData())
 	);
 }
 
